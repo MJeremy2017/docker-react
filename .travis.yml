@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_script:
+  - docker build -t tmp_image -f Dockerfile.dev
+
+script:
+  - docker run -e CI=true tmp_image npm run test
