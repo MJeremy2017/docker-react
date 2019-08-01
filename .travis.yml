@@ -7,3 +7,16 @@ before_script:
 
 script:
   - docker run -e CI=true tmp_image npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-test-app"
+  env: "DockerTestApp-env"
+  bucket_name: "elasticbeanstalk-us-east-1-735458237462"
+  bucket_path: "docker-test-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secrete_access_key:
+    secure: "$AWS_SECRETE_ACCESS_KEY"
