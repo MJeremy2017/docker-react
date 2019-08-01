@@ -19,5 +19,6 @@ deploy:
   bucket_path: "docker-test-app"
   on:
     branch: master
-  access_key_id: "AKIA2WPF2DQLGR2PYY63"
-  secrete_access_key: "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"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: 
+    secure: "$AWS_SECRETE_KEY"
