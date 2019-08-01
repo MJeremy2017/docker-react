@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web-app:
+    restart: "no"
+    build:
+      context: .  # file used to build
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+  test-app:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm", "run", "test"]
