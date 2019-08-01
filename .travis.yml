@@ -3,8 +3,8 @@ services:
   - docker
 
 before_script:
-  - echo $AWS_ACCESS_KEY
-  - echo $AWS_SECRETE_KEY
+  - echo "$AWS_ACCESS_KEY"
+  - echo "$AWS_SECRETE_KEY"
   - docker build -t tmp_image -f Dockerfile.dev .
 
 script:
@@ -20,4 +20,4 @@ deploy:
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
-  secrete_access_key: $AWS_SECRETE_KEY
+  secrete_access_key: "$AWS_SECRETE_KEY"
