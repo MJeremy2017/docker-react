@@ -3,12 +3,12 @@ services:
   - docker
 
 before_script:
-  - echo "$AWS_ACCESS_KEY"
-  - echo "$AWS_SECRETE_KEY"
   - docker build -t tmp_image -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true tmp_image npm run test
+  - echo "$AWS_ACCESS_KEY"
+  - echo "$AWS_SECRETE_KEY"
 
 deploy:
   provider: elasticbeanstalk
@@ -19,5 +19,5 @@ deploy:
   bucket_path: "docker-test-app"
   on:
     branch: master
-  access_key_id: $AWS_ACCESS_KEY
-  secrete_access_key: "$AWS_SECRETE_KEY"
+  access_key_id: "AKIA2WPF2DQLGR2PYY63"
+  secrete_access_key: "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"
